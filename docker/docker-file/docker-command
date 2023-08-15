@@ -1,0 +1,99 @@
+docker run -it hello-world
+docker version
+docker-machine version
+docker-compose version
+
+docker images - see all images
+docker ps - see all running container
+docker ps -a - list all started and running instance
+docker logs <container-id> - see the container logs
+docker logs -ft <container-id> - see the container logs
+docker stop <container-id> - stop the container
+docker start <container-id> - start the container
+docker rmi <image-id> - remove the images
+docker rm <container-id> - remove the container
+
+vipin9999/nginx - remote image
+
+docker login - login docker
+docker tag my-nginx:latest vipin9999/nginx:1.0 - create tag from current image
+docker push vipin9999/nginx:1.0 - push the image to remote repository
+
+
+vipin9999/nginx
+
+docker run -itd --name "my-nginx-pull-image-1" -p 7777:80 vipin9999/nginx:1.0
+docker run -itd --name "my-nginx-pull-image-2" -p 7778:80 vipin9999/nginx:1.0
+
+
+docker build -t spring-boot-docker.jar .
+docker images
+docker run -p 9090:8080 spring-boot-docker.jar
+docker tag spring-boot-docker.jar vipin9999/spring-boot-docker.jar
+docker push vipin9999/spring-boot-docker.jar
+docker run -p 9090:8080 vipin9999/spring-boot-docker.jar
+
+docker pull mongo:latest 
+docker run -d -p 27017:27017 --name mongo-docker mongo:latest
+docker build -t spring-boot-mongo:1.0
+docker build -t spring-boot-mongo:1.0 .
+docker logs springboot-mongodb
+docker run -p 8080:8080 --name springboot-mongodb --link mongo-docker:mongo -d spring-boot-mongo:1.0
+
+spring-boot-mysql-docker integration
+docker pull mysql
+docker network create springboot-mysql-net
+docker network list
+docker run --name mysqldb --network springboot-mysql-net -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=employeedb -d mysql
+docker exec -it mysqldb bash
+docker build -t springboot-restful-webservices .
+docker run --network springboot-mysql-net --name springboot-mysql-container -p 8080:8080 springboot-restful-webservices
+https://www.javaguides.net/2022/12/deploy-spring-boot-mysql-application-to-docker.html
+
+#mongoDB with docker 
+docker pull mongo 
+docker pull mongo:4.0.4 - alternative command
+docker run -d --name mongo-on-docker -p 27017:27017 mongo
+
+docker build -t myfirst_docker_images .
+docker run -d --name springapplication-on-docker -p 8080:8080 myfirst_docker_images
+
+https://www.appsdeveloperblog.com/deploying-spring-boot-mongodb-application-with-docker/#google_vignette
+
+#Docker command 
+docker container ls
+docker image ls
+docker network ls
+docker ps -running container
+docker pull ubuntu
+docker container run ubuntu cat /etc/os-release - run and exit from container
+docker container run ubuntu sleep 30 - run container and exit after 30 second
+docker container ls -a
+docker container run nginx - first check if nginx is present or not and then download and run
+docker container rm ae
+docker container start d79666fe6db8
+docker container stop d79666fe6db8
+docker container run -it ubuntu /bin/bash - run and go inside ubuntu container press ctrl+p+q to exit and container will running in background
+docker container inspect e9473bf83bb9
+docker container logs 54e5adcd7602
+docker container top 54e5adcd7602 - see the process list
+docker container stats - see the stats 
+docker container run -d -p 8081:80 --name test-web nginx - port mapping
+docker container exec -it 1e031b437e41 /bin/bash - enter into bash shell
+docker container rename 1e031b437e41 tiger_web - rename the docker container name
+docker container restart 1e031b437e41 - restart the container
+#export docker container
+docker container run -it ubuntu /bin/bash - run the docker container and enter into it
+apt-get install update
+apt-get install tree git -y
+docker container export  68052ec7ed5b >C:\Users\vipin\Desktop\docker\docker_image.tar
+docker container export  68052ec7ed5b -o C:\Users\vipin\Desktop\docker\docker_image1.tar - this is same as above command
+docker image import C:\Users\vipin\Desktop\docker\docker_image.tar my_ubuntu
+
+
+docker-compose -f .\docker-compose-core.yaml up -d
+
+
+
+
+ 
